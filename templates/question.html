@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title%} {{ question.question }} {% endblock %}
+{% block content%}
+
+<div class="container p-s5 mb-5" style="max-width: 600px;">
+    <h1>{{ question.question }}</h1>
+    <form action="/answer" method="POST">
+        {% for choice in question.choices %}
+        <p><input type="radio" name="answer" value="{{ choice }}"> {{ choice }}</p>
+        {% endfor %}
+        </select>
+        {% if question.allow_text %}
+        <textarea name="text"></textarea>
+        {% endif %}
+        <button class="btn btn-info btn-block btn-lg">Continue</button>
+    </form>
+</div>
+
+{% endblock %}
